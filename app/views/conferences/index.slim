@@ -1,0 +1,27 @@
+h2 Список конференций
+= form_for :params, method: :get do |f|
+  .row
+    .form-group.col-md-4
+      = label_tag 'Название'
+      = f.text_field :title, class: 'form-control'
+
+    .form-group.col-md-4
+      = label_tag 'Город'
+      = f.text_field :city, class: 'form-control'
+
+    .form-group.col-md-4
+      = label_tag 'Дата'
+      = f.date_field :date, class: 'form-control'
+  .row
+    .form-group.col-md-4
+      button.btn.btn-primary.btn-block type="submit"
+        = 'Поиск'
+    .form-group.col-md-4
+      button.btn.btn-primary#show-conferences-map data-markers="#{@markers.to_json}" data-home="#{{'lat' => 55.751244, 'lon' => 37.618423}.to_json}" type='button'
+        = 'Показать на карте'
+.map#map hidden=true
+= smart_listing_render :conferences
+
+.form-group.col-md-3
+  = link_to 'Новая запись', new_conference_path, class: 'btn btn-primary'
+

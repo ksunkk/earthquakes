@@ -1,0 +1,42 @@
+table.table
+  thead
+    tr
+      th Название
+      th Широта
+      th Долгота
+      th Магнитуда
+      th Год
+      th Месяц
+      th День
+      th Час
+      th Минута
+      th Секунда
+
+  tbody
+    tr
+      td= @record.title
+      td= @record.latitude
+      td= @record.longitude
+      td= @record.year
+      td= @record.month
+      td= @record.day
+      td= @record.hour
+      td= @record.minute
+      td= @record.second
+
+h2 На карте:
+
+iframe width="300" height="300" frameborder="0" style="border:0" src=google_map(google_map([ @record.latitude, @record.longitude ].join(',')))
+
+br
+
+h2 Изображения
+- @record.photos.each do |p|
+  img.img-thumbnail src=GoogleDriveService.file_by_id(p.file_id).thumbnail_link
+
+br
+
+h2 Статьи
+
+- @record.pdf_articles.each do |p|
+  img.img-thumbnail src=p.link

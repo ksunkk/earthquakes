@@ -1,0 +1,30 @@
+= form_for :conference, url: conferences_path, method: http_method do |f|
+  .form-group
+    = f.label 'Название'
+    = f.text_field  :title, class: 'form-control'
+  .form-group
+    = f.label 'Дата'
+    = f.text_field  :date, class: 'form-control'
+  .form-group
+    = f.label 'Город'
+    = f.text_field  :city, class: 'form-control'
+  .form-group
+    = f.label 'Улица'
+    = f.text_field  :street, class: 'form-control'
+  .form-group
+    = f.label 'Строение'
+    = f.text_field  :building, class: 'form-control'
+  .form-group
+    = f.label 'Ссылка на источник'
+    = f.text_field  :source_link, class: 'form-control'
+  .form-group
+    = f.label 'Контакты'
+    = f.text_field  :contacts, class: 'form-control'
+  .form-group
+    = f.label 'Логотип'
+    = f.file_field :logo, name: 'logo_link', class: 'form-control'
+  .form-group
+    = f.label 'Афиша'
+    = f.file_field :poster, name: 'poster', class: 'form-control'
+  .form-group
+    = f.submit

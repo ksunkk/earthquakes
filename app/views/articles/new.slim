@@ -1,0 +1,11 @@
+h1 Создание новой статьи
+= form_for :booking, url: bookings_path, method: http_method do |f|
+  .form-group
+    = f.label 'Автор'
+    = f.text_field  :author, class: 'form-control'
+  .form-group
+    = f.label 'Ссылка на источник'
+    = f.text_field  :source_link, class: 'form-control'
+  .form-group
+    = f.label 'Содержание'
+    = f.file_field :file_link, name: 'file_link', class: 'form-control'

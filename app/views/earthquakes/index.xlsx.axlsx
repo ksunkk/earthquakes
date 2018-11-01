@@ -1,0 +1,9 @@
+wb = xlsx_package.workbook
+wrap_text = wb.styles.add_style({:alignment => {:horizontal => :center, :vertical => :center, :wrap_text => true}}  )
+wb.add_worksheet(name: 'Землетрясения') do |sheet|
+  sheet.add_row ['Название', 'Широта', 'Долгота', 'Магнитуда', 'Год', 'Месяц', 'День', 'Час', 'Минута', 'Секунда'], style: wrap_text
+  @earthquakes.each do |record|
+    sheet.add_row [record.title, record.latitude, record.longitude, record.year, record.month, record.day, record.hour, record.minute, record.second],
+                  style: wrap_text
+  end
+end

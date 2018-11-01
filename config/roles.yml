@@ -1,0 +1,16 @@
+---
+  - id: 1
+    name: 'Исследователь'
+    code: 'researcher'
+  - id: 2
+    name: 'Гость'
+    code: 'guest'
+  - id: 3
+    name: 'Организация'
+    code: 'organisation'
+  - id: 4 
+    name: 'Администратор'
+    code: 'admin'
+  - id: 5
+    name: 'Менеджер'
+    code: 'manager'

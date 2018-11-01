@@ -1,0 +1,37 @@
+
+= form_for :earthquake, url: earthquakes_path, method: http_method do |f|
+  .form-group
+    = f.label :title
+    = f.text_field  :title, class: 'form-control', required: true
+  .form-group
+    = f.label :latitude
+    = f.text_field  :latitude, class: 'form-control', required: true
+  .form-group
+    = f.label :longitude
+    = f.text_field  :longitude, class: 'form-control', required: true
+  .form-group
+    = f.label :year
+    = f.text_field  :year, class: 'form-control'
+  .form-group
+    = f.label :month
+    = f.text_field  :month, class: 'form-control'
+  .form-group
+    = f.label :day
+    = f.text_field  :day, class: 'form-control'
+  .form-group
+    = f.label :hour
+    = f.text_field  :hour, class: 'form-control'
+  .form-group
+    = f.label :minute
+    = f.text_field  :minute, class: 'form-control'
+  .form-group
+    = f.label :second
+    = f.text_field  :second, class: 'form-control'
+  .form-group
+    = f.label :photos
+    = f.file_field :photos, multiple: true, name: 'photos[]', class: 'form-control'
+  .form-group
+    = f.label :articles
+    = f.file_field :articles, multiple: true, name: 'articles[]', class: 'form-control'
+  .form-group
+    = f.submit

@@ -1,0 +1,24 @@
+.col-md-6
+  h2 Edit profile
+  = form_for :user, url: users_update_profile_path, method: :post do |f|
+    .form-group
+      = f.label :first_name
+      = f.text_field  :first_name, class: 'form-control', required: true
+    .form-group
+      = f.label :last_name
+      = f.text_field  :last_name, class: 'form-control', required: true
+    .form-group
+      = f.label :surname
+      = f.text_field  :surname, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.text_field  :email, class: 'form-control', required: true
+    .form-group
+      = f.label :work_place
+      = f.text_field  :work_place, class: 'form-control', required: true
+    .form-group
+      = f.label :last_name
+      = f.text_field  :last_name, class: 'form-control', required: true
+    .form-group
+      = f.submit
+

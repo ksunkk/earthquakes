@@ -1,0 +1,36 @@
+table.table
+  thead
+    tr
+      th Название
+      th Адрес
+      th Дата
+      th Источник
+      th Контакты
+      th Категории
+
+  tbody
+    tr
+      td= @record.title
+      td= @record.address
+      td= @record.date
+      td= @record.source_link
+      td= @record.contact_info
+      td
+
+h3 На карте:
+iframe width="300" height="300" frameborder="0" style="border:0" src=google_map(@record.address)
+
+br
+
+h3 Афиша
+
+img.img-thumbnail src=@record.poster_link
+
+br
+
+h3 Логотип
+
+img.img-thumbnail src=@record.logo_link
+
+= link_to 'Зарегестрироваться', new_booking_path(conference_id: @record.id), class: 'btn btn-primary'
+= link_to 'Назад к списку', conferences_path, class: 'btn btn-primary'

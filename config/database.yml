@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: geo_site
+  username: postgres
+  password: gerway
+  host: 127.0.0.1
+  port: 5432
+  pool: 5
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  database: telegram_bot_db
+  username: telegram_bot
+  password: password

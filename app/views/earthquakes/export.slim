@@ -1,0 +1,12 @@
+.panel
+  .panel-heading
+    = 'Экспорт каталога землетрясений' 
+  .panel-body
+    = 'Перетащите файл формата CSV'
+    form#js-upload-form action="" method="post" enctype="multipart/form-data"
+      .form-inline
+        .form-group
+          input#js-upload-files type="file" name="files[]"
+        button.btn.btn-primary#js-upload-submit type='submit'
+          Загрузить
+    .upload-drop-zone#drop-zone

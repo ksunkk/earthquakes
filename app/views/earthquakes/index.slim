@@ -1,0 +1,47 @@
+h2 Список землетрясений
+= form_for :params, method: :get do |f|
+  .row
+    .form-group.col-md-4
+      = label_tag 'Широта'
+      = f.text_field :latitude, class: 'form-control'
+
+    .form-group.col-md-4
+      = label_tag 'Долгота'
+      = f.text_field :longitude, class: 'form-control'
+
+    .form-group.col-md-4
+      = label_tag 'Магнитуда'
+      = f.text_field :magnitude, class: 'form-control'
+
+  .row
+    .form-group.col-md-3
+      = label_tag 'Год'
+      = f.text_field :year, class: 'form-control'
+
+    .form-group.col-md-3
+      = label_tag 'Месяц'
+      = f.text_field :month, class: 'form-control'
+
+    .form-group.col-md-3
+      = label_tag 'День'
+      = f.text_field :day, class: 'form-control'
+
+
+  .row
+    .form-group.col-md-4
+      button.btn.btn-primary.btn-block type="submit"
+        = 'Поиск'
+    .form-group.col-md-4
+      button.btn.btn-primary.btn-block type="submit" name="format" value="xlsx"
+        = 'Скачать в xlsx'
+    .form-group.col-md-4
+      button.btn.btn-primary#show-earthquakes-map data-markers="#{@markers.to_json}" data-home="#{{'lat' => 55.751244, 'lon' => 37.618423}.to_json}" type='button'
+        = 'Показать на карте'
+.map#map hidden=true
+= smart_listing_render :earthquakes
+
+.form-group.col-md-3
+  = link_to 'Загрузить файл', export_earthquakes_path, class: 'btn btn-primary'
+.form-group.col-md-3
+  = link_to 'Новая запись', new_earthquake_path, class: 'btn btn-primary'
+

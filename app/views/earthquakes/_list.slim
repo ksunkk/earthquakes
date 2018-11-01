@@ -1,0 +1,34 @@
+- if smart_listing.present?
+  table.table
+    thead
+      tr
+        th Название
+        th Широта
+        th Долгота
+        th Магнитуда
+        th Год
+        th Месяц
+        th День
+        th Час
+        th Минута
+        th Секунда
+
+    tbody
+      - smart_listing.collection.each do |record|
+        tr
+          td
+            = link_to record.title, earthquake_path(record)
+          td= record.latitude
+          td= record.longitude
+          td= record.year
+          td= record.month
+          td= record.day
+          td= record.hour
+          td= record.minute
+          td= record.second
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+
+- else
+  p.text-center.text-info
+    = 'Записей не найдено'

@@ -1,0 +1,11 @@
+= form_for :booking, url: bookings_path, method: http_method do |f|
+  = f.hidden_field :conference_id, value: @conference.id
+  .form-group
+    = f.label 'Имя'
+    = f.text_field  :title, class: 'form-control'
+  .form-group
+    = f.label 'Номер телефона'
+    = f.text_field  :date, class: 'form-control'
+  .form-group
+    = f.submit
+= link_to 'Вернуться к списку', conferences_path, class: 'btn btn-primary'
