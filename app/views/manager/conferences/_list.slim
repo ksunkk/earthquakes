@@ -1,0 +1,28 @@
+- if smart_listing.present?
+  table.table
+    thead
+      tr
+        th Название
+        th Адрес
+        th Дата
+        th Источник
+        th Контакты
+        th Категории
+        th
+
+    tbody
+      - smart_listing.collection.each do |record|
+        tr
+          td
+            = link_to record.title, manager_conference_path(record)
+          td= record.address
+          td= record.date
+          td= record.source_link
+          td= record.contact_info
+
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+
+- else
+  p.text-center.text-info
+    = 'Записей не найдено'

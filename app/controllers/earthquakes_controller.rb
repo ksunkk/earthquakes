@@ -1,7 +1,4 @@
 class EarthquakesController < ApplicationController
-  include SmartListing::Helper::ControllerExtensions
-  helper  SmartListing::Helper
-
   skip_before_action :verify_authenticity_token, only: [:load_file]
 
   def index
@@ -9,6 +6,8 @@ class EarthquakesController < ApplicationController
     @markers = @earthquakes.map { |r| { lat: r.latitude, lon: r.longitude, title: r.title } }
     if params['format'] == 'xlsx'
       render xlsx: 'earthquakes_list', template: 'earthquakes/index', disposition: 'attachment'
+    elsif params['format'] == 'csv'
+      send_data EarthquakesService.to_csv(@earthquakes), filename: "eartquakes-#{Time.now}.csv"
     else
       smart_listing_create :earthquakes,
                          @earthquakes,

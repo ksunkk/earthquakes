@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+
   before_action :authenticate_user!
   before_action :check_user_confirmed
   protect_from_forgery with: :exception, prepend: true

@@ -6,6 +6,20 @@ Rails.application.routes.draw do
       get 'success'
     end
   end
+  namespace :manager do
+    resources :bookings do
+      member do
+        put :confirm, to: 'bookings#confirm'
+      end
+    end
+    resources :comments
+    resources :users
+    resources :conferences do
+      member do
+        put :confirm, to: 'conferences#confirm'
+      end
+    end
+  end
   resources :articles
   resources :conferences
   resources :bookings

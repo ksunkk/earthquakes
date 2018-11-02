@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
-
+gem 'recaptcha'
 gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 gem 'rubyzip',  '~> 1.1', require: 'zip'
@@ -26,7 +26,8 @@ gem 'google_drive'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'google_calendar'
-
+gem 'unicorn'
+gem "capistrano"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

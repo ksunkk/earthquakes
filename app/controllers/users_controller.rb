@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def update_profile
-    current_user.update_attributes(params[:user])
+    current_user.update_attributes(user_params)
   end
 
   def profile
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:login, )
+    params.require(:user).permit(:name, :last_name, :surname, :work_place, :email)
   end
 end

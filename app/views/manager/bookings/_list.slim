@@ -1,0 +1,23 @@
+- if smart_listing.present?
+  table.table
+    thead
+      tr
+        th Конференция
+        th Имя
+        th Номер телефона
+        th
+
+    tbody
+      - smart_listing.collection.each do |record|
+        tr
+          td
+            = link_to record.conference.title, conference_path(record.conference)
+          td= record.user_name
+          td= record.phone
+          td= link_to 'Подтвердить', confirm_manager_booking_path(record), method: :put, remote: true
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+
+- else
+  p.text-center.text-info
+    = 'Записей не найдено'

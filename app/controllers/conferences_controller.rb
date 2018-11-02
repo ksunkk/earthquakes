@@ -1,7 +1,4 @@
 class ConferencesController < ApplicationController
-  include SmartListing::Helper::ControllerExtensions
-  helper  SmartListing::Helper
-
   def index
     @conferences = ConferencesService.search(params[:params], current_user)
     @markers = @conferences.map { |r| { address: r.address } }
@@ -31,7 +28,7 @@ class ConferencesController < ApplicationController
 
   def create
     files = params[:photos].to_a + params[:articles].to_a
-    new_record = Conference.create(conference_params)
+    new_record = Conference.create(conference_params.merge(is_confirmed: false))
     google_drive_client.upload(files, record: new_record)
     redirect_to conference_path(new_record) 
   end
