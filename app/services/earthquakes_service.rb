@@ -10,4 +10,13 @@ class EarthquakesService
     @records = @records.where(day: search_params[:day]) if search_params[:day].present?
     @records
   end
+
+  def self.to_csv(scope)
+    csv_string = CSV.generate do |csv|
+      csv << Earthquake.attribute_names
+      scope.each do |r|
+        csv << r.attributes.values
+      end
+    end 
+  end
 end

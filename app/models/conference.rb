@@ -4,6 +4,10 @@ class Conference < ApplicationRecord
 
   has_many :bookings
 
+  def confirm!
+    self.update_attributes(is_confirmed: true)
+  end
+
   def address
     [city, street, building].compact.join(', ')
   end
