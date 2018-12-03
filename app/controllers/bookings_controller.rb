@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.create(booking_params)
+    @booking = Booking.create(booking_params.merge(user_id: current_user.id))
     render :success
   end
 

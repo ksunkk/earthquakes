@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_102931) do
+ActiveRecord::Schema.define(version: 2018_11_27_125113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2018_11_01_102931) do
     t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "commentaries", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.text "text"
+    t.boolean "is_deleted", default: false
+    t.boolean "is_accepted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_commentaries_on_commentable_type_and_commentable_id"
   end
 
   create_table "conferences", force: :cascade do |t|
@@ -67,6 +79,32 @@ ActiveRecord::Schema.define(version: 2018_11_01_102931) do
     t.text "description"
     t.string "source"
     t.string "logo"
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.boolean "is_deleted", default: true
+  end
+
+  create_table "keywords_users", force: :cascade do |t|
+    t.bigint "keyword_id"
+    t.bigint "user_id"
+    t.index ["keyword_id"], name: "index_keywords_users_on_keyword_id"
+    t.index ["user_id"], name: "index_keywords_users_on_user_id"
+  end
+
+  create_table "notification_method_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "notification_method_id"
+  end
+
+  create_table "notification_methods", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.boolean "is_deleted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pdf_articles", force: :cascade do |t|

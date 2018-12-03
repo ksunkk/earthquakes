@@ -1,5 +1,5 @@
 class ConferencesService
   def self.search(search_params, user)
-    Conference.all
+    Conference.actual
   end
 end

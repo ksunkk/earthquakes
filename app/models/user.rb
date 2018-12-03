@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :notification_methods
+  has_many :keywords
+  belongs_to :role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +15,10 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:login) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def admin?
+    role.code.to_sym == :admin
   end
 
   def phone_verified!

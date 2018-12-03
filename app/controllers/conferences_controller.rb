@@ -15,16 +15,12 @@ class ConferencesController < ApplicationController
     @record = Conference.find(params[:id])
   end
 
-  def new
-  end
-
   def edit
     @record = Conference.find(params[:id])
   end
 
-  def update
-
-  end
+  def new; end
+  def update; end
 
   def create
     files = params[:photos].to_a + params[:articles].to_a
@@ -33,8 +29,7 @@ class ConferencesController < ApplicationController
     redirect_to conference_path(new_record) 
   end
 
-  def export_from_file
-  end
+  def export_from_file; end
 
   def load_file
     file = params[:files].first.tempfile

@@ -67,4 +67,4 @@ $(document).on 'click', '#show-earthquakes-map', ->
   googleMap = new GoogleMap($('#show-earthquakes-map:eq(0)').data('home'))
   googleMap.addMarkers($("#show-earthquakes-map:eq(0)").data("markers"))
   console.log googleMap.markers
-  googleMap.drawMarkers
+googleMap.drawMarkers

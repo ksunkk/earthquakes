@@ -1,0 +1,2 @@
+class NotificationMethod < ApplicationRecord
+end

@@ -1,24 +1,15 @@
-table.table
-  thead
-    tr
-      th Название
-      th Адрес
-      th Дата
-      th Источник
-      th Контакты
-      th Категории
-
-  tbody
-    tr
-      td= @record.title
-      td= @record.address
-      td= @record.date
-      td= @record.source_link
-      td= @record.contact_info
-      td
-
-h3 На карте:
-iframe width="300" height="300" frameborder="0" style="border:0" src=google_map(@record.address)
+.row
+  iframe width="300" height="300" frameborder="0" style="border:0" src=google_map(@record.address)
+  .card style=("width: 18rem;") 
+    .card-body
+      h5.card-title
+        = @record.title
+      h6.card-subtitle.mb-2.text-muted
+        = @record.date
+      p.card-text
+        = @record.contact_info
+      a.card-link href=@record.source_link
+        | Источник
 
 br
 

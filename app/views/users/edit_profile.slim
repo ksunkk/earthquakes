@@ -17,5 +17,13 @@
       = f.label :work_place
       = f.text_field  :work_place, class: 'form-control', required: true
     .form-group
+      = f.label :notification_methos
+      - NotificationMethod.all do |method|
+        = f.check_box method.name, name: 'notification_methos[]'
+    .form-group
+      = f.label :notification_methos
+      - Keyword.all do |method|
+        = f.check_box method.name, name: 'notification_methos[]'
+    .form-group
       = f.submit
 

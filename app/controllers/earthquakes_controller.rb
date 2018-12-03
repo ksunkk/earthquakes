@@ -19,15 +19,10 @@ class EarthquakesController < ApplicationController
     @record = Earthquake.find(params[:id])
   end
 
-  def new
-  end
+  def new; end
 
   def edit
     @record = Earthquake.find(params[:id])
-  end
-
-  def update
-
   end
 
   def create
@@ -37,8 +32,9 @@ class EarthquakesController < ApplicationController
     redirect_to earthquake_path(new_record) 
   end
 
-  def export_from_file
-  end
+  def select_area; end
+  def update; end
+  def export_from_file; end
 
   def load_file
     file = params[:files].first.tempfile

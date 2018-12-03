@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Earthquakes App
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFbbYeY1-5K3FU0Sg6IhB81ueJotkTToU" 
+
+body.fixed.skin-blue-light
+  = render 'layouts/navbar'
+  #wrapper
+    = render 'layouts/sidebar'
+    #page-content-wrapper
+      #container-fluid
+        = yield

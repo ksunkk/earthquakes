@@ -1,0 +1,37 @@
+#sidebar-wrapper
+  ul.sidebar-nav
+    li
+      a href="#{select_area_earthquakes_path}"
+        | Землятресения
+    li
+      a href="#{conferences_path}"
+        | Конференции
+    li.nav-dropdown
+      a.nav-dropdown-toggle href="#{articles_path}" 
+        | Статьи
+    - if current_user.admin?
+      li
+        a href="#{manager_bookings_path}" 
+          | Подтверждение бронирований
+      li
+        a href="#{manager_conferences_path}" 
+          | Заявки на добавление событий
+      li
+        a href="#{manager_commentaries_path}" 
+          | Комментарии
+
+/ nav.side-panel
+/   .sidebar-sticky
+/     ul.nav.flex-column
+/       li.nav-item
+/         a.nav-link href="#{earthquakes_path}"
+/           i.nav-icon.cui-speedometer
+/           | Землятресения
+/       li.nav-item
+/         a.nav-link href="#{conferences_path}"
+/           i.nav-icon.cui-speedometer
+/           | Конференции
+/       li.nav-item.nav-dropdown
+/         a.nav-link.nav-dropdown-toggle href="#{articles_path}" 
+/           i.nav-icon.cui-puzzle
+/           | Статьи

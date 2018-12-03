@@ -1,0 +1,24 @@
+- if smart_listing.present?
+  table.table
+    thead
+      tr
+        th Автор
+        th Текст комментария
+        th
+
+    tbody
+      - smart_listing.collection.each do |record|
+        tr
+          td
+            = link_to record.user, conference_path(record.conference)
+          td= record.user.full_name
+          td= record.text
+          td= link_to 'Опубликовать', manager_commentary_path(record, action: :accept), method: :put, remote: true
+          td= link_to 'Удалить', manager_commentary_path(record, action: :delete), method: :put, remote: true
+
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+
+- else
+  p.text-center.text-info
+    = 'Записей не найдено'

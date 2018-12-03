@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'earthquakes#index'
   resources :phone_verifications, :only => [:new, :create] do |p|
     collection do
       get 'challenge'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :manager do
+    resources :commentaries
     resources :bookings do
       member do
         put :confirm, to: 'bookings#confirm'
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   resources :bookings
   resources :earthquakes do
     collection do
+      get :select_area
       get :export
       post :export, to: 'earthquakes#load_file'
       get :map
