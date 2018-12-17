@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 
-set :application, "eartquakes"
+set :application, "earthquakes"
 set :repo_url, "git@github.com:ksunkk/earthquakes.git"
 set :use_sudo, true
 # set :whenever_command, "bundle exec whenever"
