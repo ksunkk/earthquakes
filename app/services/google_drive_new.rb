@@ -3,38 +3,22 @@ require 'googleauth'
 require 'googleauth/stores/file_token_store'
 require 'fileutils'
 
+OOB_URI = 'http://earthquakes.host'.freeze
+APPLICATION_NAME = 'Drive API Ruby Quickstart'.freeze
+CREDENTIALS_PATH = "#{Rails.root}/config/credentials.json".freeze
+# The file token.yaml stores the user's access and refresh tokens, and is
+# created automatically when the authorization flow completes for the first
+# time.
+TOKEN_PATH = 'token.yaml'.freeze
+SCOPE = Google::Apis::DriveV3::AUTH_DRIVE_METADATA_READONLY
+
+##
+# Ensure valid credentials, either by restoring from the saved credentials
+# files or intitiating an OAuth2 authorization. If authorization is required,
+# the user's default browser will be launched to approve the request.
+#
+# @return [Google::Auth::UserRefreshCredentials] OAuth2 credentials
 class GoogleDriveNew
-  OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
-  APPLICATION_NAME = 'earthquakes'.freeze
-  CREDENTIALS_PATH = 'config/credentials.json'.freeze
-  # The file token.yaml stores the user's access and refresh tokens, and is
-  # created automatically when the authorization flow completes for the first
-  # time.
-  TOKEN_PATH = 'config/google_api_token.yaml'.freeze
-  SCOPE = Google::Apis::DriveV3::AUTH_DRIVE_METADATA_READONLY
-
-  attr_accessor :service
-
-  def initialize
-    @service = Google::Apis::DriveV3::DriveService.new
-    @service.client_options.application_name = APPLICATION_NAME  
-    @service.authorization = authorize
-    @service
-  end
-
-  def check
-    # List the 10 most recently modified files.
-    response = service.list_files(page_size: 50,
-                                  fields: 'nextPageToken, files(id, name)')
-    puts 'Files:'
-    puts 'No files found' if response.files.empty?
-    response.files.each do |file|
-      puts "#{file.name} (#{file.id})"
-    end
-  end
-
-  private
-
   def authorize
     client_id = Google::Auth::ClientId.from_file(CREDENTIALS_PATH)
     token_store = Google::Auth::Stores::FileTokenStore.new(file: TOKEN_PATH)
@@ -53,4 +37,17 @@ class GoogleDriveNew
     credentials
   end
 
+  # # Initialize the API
+  # drive_service = Google::Apis::DriveV3::DriveService.new
+  # drive_service.client_options.application_name = APPLICATION_NAME
+  # drive_service.authorization = authorize
+
+  # # List the 10 most recently modified files.
+  # response = drive_service.list_files(page_size: 10,
+  #                                     fields: 'nextPageToken, files(id, name)')
+  # puts 'Files:'
+  # puts 'No files found' if response.files.empty?
+  # response.files.each do |file|
+  #   puts "#{file.name} (#{file.id})"
+  # end
 end

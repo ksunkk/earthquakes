@@ -1,0 +1,21 @@
+- if smart_listing.present?
+  table.table
+    thead
+      tr
+        th Название
+        th Код
+        th Описание
+
+    tbody
+      - smart_listing.collection.each do |record|
+        tr
+          td= record.name
+          td= record.code
+          td= record.description
+
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+
+- else
+  p.text-center.text-info
+    = 'Записей не найдено'

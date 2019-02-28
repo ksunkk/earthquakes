@@ -1,0 +1,5 @@
+h2 Добавить комментарий
+= form_for :commentary, url: commentary_path(object_type: locals[:object_type], object_id: locals[:object_id]), method: http_method do |f|
+  .form-group
+    = f.label :text
+    = f.text_area  :text, class: 'form-control', required: true

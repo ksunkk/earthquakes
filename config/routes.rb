@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :manager do
+    resources :catalogs
     resources :commentaries
     resources :bookings do
       member do
@@ -24,6 +25,11 @@ Rails.application.routes.draw do
   end
   resources :articles
   resources :conferences
+  resources :commentaries do
+    member do
+      post :accept
+    end
+  end
   resources :bookings
   resources :earthquakes do
     collection do
@@ -37,4 +43,6 @@ Rails.application.routes.draw do
   get 'users/profile', to: 'users#profile'
   post 'users/update_profile', to: 'users#update_profile'
   devise_for :users
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
 end

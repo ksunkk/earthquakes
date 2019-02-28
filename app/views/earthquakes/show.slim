@@ -40,3 +40,8 @@ h2 Статьи
 
 - @record.pdf_articles.each do |p|
   img.img-thumbnail src=p.link
+
+br
+
+= render partial: 'shared/commentary_form', locals: { object_type: @record.class, object_id: @record.id }
+= link_to 'Назад к списку', earthquakes_path, class: 'btn btn-primary'

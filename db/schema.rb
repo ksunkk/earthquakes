@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_125113) do
+ActiveRecord::Schema.define(version: 2019_02_17_172558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2018_11_27_125113) do
     t.string "phone"
     t.boolean "is_confirmed"
     t.boolean "is_deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "catalogs", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.boolean "is_deleted"
+    t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,6 +88,13 @@ ActiveRecord::Schema.define(version: 2018_11_27_125113) do
     t.text "description"
     t.string "source"
     t.string "logo"
+  end
+
+  create_table "earthquakes_catalogs", force: :cascade do |t|
+    t.bigint "earthquake_id"
+    t.bigint "catalog_id"
+    t.index ["catalog_id"], name: "index_earthquakes_catalogs_on_catalog_id"
+    t.index ["earthquake_id"], name: "index_earthquakes_catalogs_on_earthquake_id"
   end
 
   create_table "keywords", force: :cascade do |t|

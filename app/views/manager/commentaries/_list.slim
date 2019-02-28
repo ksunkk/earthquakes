@@ -9,8 +9,6 @@
     tbody
       - smart_listing.collection.each do |record|
         tr
-          td
-            = link_to record.user, conference_path(record.conference)
           td= record.user.full_name
           td= record.text
           td= link_to 'Опубликовать', manager_commentary_path(record, action: :accept), method: :put, remote: true
