@@ -5,27 +5,26 @@
       h5.card-title
         = @record.title
       h6.card-subtitle.mb-2.text-muted
-        = @record.date
+        = I18n.l @record.date
       p.card-text
         = @record.contact_info
       a.card-link href=@record.source_link
         | Источник
 
+.row
+  h3 Афиша
+.row
+  img.img-thumbnail src=@record.poster_link
+
+.row
+  h3 Логотип
+.row
+  img.img-thumbnail src=@record.logo_link
+
+.row
+  = link_to 'Зарегестрироваться', new_booking_path(conference_id: @record.id), class: 'btn btn-primary'
+  = link_to 'Назад к списку', conferences_path, class: 'btn btn-primary'
+
 br
 
-h3 Афиша
-
-img.img-thumbnail src=@record.poster_link
-
-br
-
-h3 Логотип
-
-img.img-thumbnail src=@record.logo_link
-
-br
-
-= render partial: 'shared/commentary_form', locals: { object_type: @record.class, object_id: @record.id }
-
-= link_to 'Зарегестрироваться', new_booking_path(conference_id: @record.id), class: 'btn btn-primary'
-= link_to 'Назад к списку', conferences_path, class: 'btn btn-primary'
+= render partial: 'shared/commentary_form', locals: { object_type: @record.class, object_id: @record.id, http_method: :post }

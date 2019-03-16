@@ -25,8 +25,10 @@ gem 'smart_listing'
 gem 'google_drive'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 gem 'google_calendar'
 gem 'unicorn'
+gem 'omniauth-google-oauth2'
 gem "capistrano"
 gem 'google-api-client', '~> 0.8'
 group :development, :test do

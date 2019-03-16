@@ -1,6 +1,6 @@
 class ConferencesController < ApplicationController
   def index
-    @conferences = ConferencesService.search(params[:params], current_user)
+    @conferences = ConferencesService.search(params[:params], current_user, confirmed: true)
     @markers = @conferences.map { |r| { address: r.address } }
     if params['format'] == 'xlsx'
       render xlsx: 'conferences_list', template: 'conferences/index', disposition: 'attachment'

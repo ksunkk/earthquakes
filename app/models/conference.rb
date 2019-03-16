@@ -1,6 +1,6 @@
 class Conference < ApplicationRecord
-  geocoded_by :address
-  after_validation :geocode
+  # geocoded_by :address
+  # after_validation :geocode
 
   has_many :bookings
   has_many :commentaries, as: :commentable

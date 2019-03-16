@@ -3,16 +3,16 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     span.navbar-toggler-icon
   a.navbar-brand href="#{root_path}"
     = 'Название сайта'
-  div#inavbarTogglerDemo03.collapse.navbar-collapse
-    ul.navbar-nav.mr-auto.mt-2.mt-lg-0
-      li.nav-item.active
-        a.nav-link href="users/edit_profile"
-          = 'Мой профиль'
-      li.nav-item.active
-        a.nav-link href="#{destroy_user_session_path}"
-          = 'Выход из учетной записи'
+  - if current_user
+    div#inavbarTogglerDemo03.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+        li.nav-item.active
+          a.nav-link href="users/edit_profile"
+            = 'Мой профиль'
+        li.nav-item.active
+          = link_to 'Выход из учетной записи', destroy_user_session_path, class: 'nav-link', method: :delete
 
-    form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2 type="search" placeholder="Поиск" aria-label="Поиск"
-      button.btn.btn-outline-success.my-2.my-sm-0 type="submit"
-        = 'Поиск'
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2 type="search" placeholder="Поиск" aria-label="Поиск"
+        button.btn.btn-outline-success.my-2.my-sm-0 type="submit"
+          = 'Поиск'

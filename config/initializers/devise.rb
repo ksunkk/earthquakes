@@ -17,4 +17,5 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.scoped_views = true
   config.omniauth :facebook, "171828393699023", "89eb8a07fc741eea692bd695644c31c1"
+  config.omniauth :vkontakte, '6714010', 'kuzatVlUnYJw3aPKgn4H'
 end
