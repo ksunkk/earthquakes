@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :manager do
     resources :catalogs
     resources :commentaries
+    resources :earthquakes
     resources :bookings do
       member do
         put :confirm, to: 'bookings#confirm'

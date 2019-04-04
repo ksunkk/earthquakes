@@ -12,6 +12,9 @@
           | Статьи
       - if current_user.admin?
         li
+          a href="#{manager_earthquakes_path}" 
+            | Каталоги землятресений
+        li
           a href="#{manager_bookings_path}" 
             | Подтверждение бронирований
         li
